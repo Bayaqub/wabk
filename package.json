@@ -1,0 +1,41 @@
+{
+  "name": "whatsapp-api",
+  "version": "1.0.0",
+  "description": "Whatsapp api by Ngekoding",
+  "main": "apps.js",
+  "scripts": {
+    "start": "node apps.js",
+    "start:dev": "nodemon apps.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "whatsapp-api",
+    "node.js"
+  ],
+  "author": "Nur Muhammad",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "express-validator": "^6.9.2",
+    "git": "^0.1.5",
+    "http": "0.0.1-security",
+    "mime-types": "^2.1.32",
+    "moment": "^2.29.1",
+    "mysql2": "^2.3.3",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.7.3",
+    "pm2": "^5.2.0",
+    "puppeteer": "^19.7.1",
+    "qrcode": "^1.4.4",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.4.0",
+    "stream": "^0.0.2",
+    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#fix-buttons-list"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

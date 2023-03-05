@@ -1,0 +1,32 @@
+2023/02/22-15:01:13.926 3024 Reusing MANIFEST C:\wabk\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-003426
+2023/02/22-15:01:13.929 3024 Recovering log #4535
+2023/02/22-15:01:14.479 3024 Reusing old log C:\wabk\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/004535.log 
+2023/02/22-15:01:27.686 28a0 Level-0 table #4549: started
+2023/02/22-15:01:27.821 28a0 Level-0 table #4549: 1318867 bytes OK
+2023/02/22-15:01:27.823 28a0 Delete type=0 #4535
+2023/02/22-15:01:27.838 28a0 Compacting 1@0 + 1@1 files
+2023/02/22-15:01:28.096 28a0 Generated table #4550@0: 40140 keys, 928052 bytes
+2023/02/22-15:01:28.096 28a0 Compacted 1@0 + 1@1 files => 928052 bytes
+2023/02/22-15:01:28.096 28a0 compacted to: files[ 0 1 8 0 0 0 0 ]
+2023/02/22-15:01:30.937 14d4 Compacting 1@1 + 8@2 files
+2023/02/22-15:01:31.152 14d4 Generated table #4551@1: 49981 keys, 2243316 bytes
+2023/02/22-15:01:31.214 14d4 Generated table #4552@1: 5445 keys, 2142542 bytes
+2023/02/22-15:01:31.343 14d4 Generated table #4553@1: 11238 keys, 2156404 bytes
+2023/02/22-15:01:31.408 14d4 Generated table #4554@1: 322 keys, 2114641 bytes
+2023/02/22-15:01:31.806 14d4 Generated table #4555@1: 106031 keys, 2256808 bytes
+2023/02/22-15:01:32.609 14d4 Generated table #4556@1: 118798 keys, 2276213 bytes
+2023/02/22-15:01:33.952 14d4 Generated table #4557@1: 119151 keys, 2276735 bytes
+2023/02/22-15:01:34.614 14d4 Generated table #4558@1: 83152 keys, 1592461 bytes
+2023/02/22-15:01:34.615 14d4 Compacted 1@1 + 8@2 files => 17059120 bytes
+2023/02/22-15:01:34.615 14d4 compacted to: files[ 0 0 8 0 0 0 0 ]
+2023/02/22-15:01:34.616 14d4 Delete type=2 #4538
+2023/02/22-15:01:34.616 14d4 Delete type=2 #4539
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4540
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4541
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4542
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4543
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4544
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4545
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4546
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4549
+2023/02/22-15:01:34.617 14d4 Delete type=2 #4550

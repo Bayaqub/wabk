@@ -1,0 +1,184 @@
+const mysql = require('mysql2/promise');
+
+
+//const getReply = async (keyword) => {
+//	const connection = await createConnection();
+//	const [rows] = await connection.execute('SELECT membername, memberid,email, total_point FROM m_member WHERE hp = ?', [keyword]);
+//	if(rows.length > 0) return 'Selamat Datang di Whatsapp Interaktif *Citra Susu* \n\nNama: *'+rows[0].membername+'*\nID: *'+rows[0].memberid+'*\nEmail: *'+rows[0].email+'*'+'\nPoint: *'+rows[0].total_point+'*';
+//	return false;
+//}
+
+
+//const getMessage = async (message) => {
+//	const connection = await warep();
+//	const [rows] = await connection.execute('SELECT id FROM wa_replies1 WHERE hp = ?', [message]);
+//	if(rows.length > 0) return '\n\n*'+rows[0].id+'* ternyata bisa wkwkwkw';
+//	return false;
+
+//}
+
+const getMember = async (noPel) => {
+	let connection = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+	//const connection = await warep();
+	const [rows] = await connection.query('SELECT memberid,membername,hp,total_point FROM m_member WHERE hp = ?', [noPel]);
+	if(rows.length > 0) {
+		connection.close()
+		return 'Anda telah terdaftar\n\nID       : '+ rows[0].memberid+'\nNama   : '+rows[0].membername.replace(/\w/,c =>c.toUpperCase())+'\nNo HP : '+rows[0].hp+'\nPoin    : Rp'+rows[0].total_point+ '\nPoin expired : 31 Desember 2022\n\nInformasi produk,promo,dll ikuti kami di https://www.instagram.com/citrasusuonline/';
+		
+	} else {
+	connection.close();
+	return false;
+	}
+}
+
+const getMemberB = async (noPel) => {
+	let connection = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+
+	//const connection = await warep();
+	const [rows] = await connection.query('SELECT memberid,membername,hp,total_point FROM m_member WHERE hp = ?', [noPel]);
+	if(rows.length > 0){
+		connection.close();
+		return rows[0].memberid;
+	}else{
+	connection.close();
+	return false;
+	}
+}
+const getPoint = async (noPel) => {
+	let connection = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+	const [rows] = await connection.query('SELECT memberid,membername,hp,total_point FROM m_member WHERE hp = ?', [noPel]);
+	if(rows.length > 0){
+		connection.close();
+		return 'Hai Mam & Pap '+rows[0].membername+'\n\nID         : '+ rows[0].memberid+'\nNama   : '+rows[0].membername+'\nNo HP  : '+rows[0].hp+'\nPoin     : Rp'+rows[0].total_point+'\nPoin expired: 31 Desember 2022\n\n* *Belanja Rp50rb mendapat 500 poin(= Rp500) berlaku kelipatan*.\n* Poin dapat digunakan untuk pembayaran.\n* *Gunakan member anda saat belanja untuk mendapatkan poin.*\n\nInformasi produk,promo,dll ikuti kami di https://www.instagram.com/citrasusuonline/ ';
+	}else{
+	connection.close();
+	return false;
+	}
+}
+const getPointB = async (noPel) => {
+	
+	let connection = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+
+	const [rows] = await connection.query("SELECT memberid,membername,hp,total_point FROM m_member WHERE nama_sekolah= 'ensure' and hp = ?", [noPel]);
+	if(rows.length > 0) {
+		connection.close();
+		return 'Hai Mam & Pap '+rows[0].membername+'\n\nID         : '+ rows[0].memberid+'\nNama   : '+rows[0].membername+'\nNo HP  : '+rows[0].hp+'\nPoin     : Rp'+rows[0].total_point+'\nPoin expired: 31 Desember 2022\n\n* *Belanja Rp50rb mendapat 500 poin(= Rp500) berlaku kelipatan*.\n* Poin dapat digunakan untuk pembayaran.\n* *Gunakan member anda saat belanja untuk mendapatkan poin.*\n\nInformasi produk,promo,dll ikuti kami di https://www.instagram.com/citrasusuonline/ ';
+	}else{
+		connection.close();
+		return false;
+	}
+}
+const daftar = async (id,namaPel,domPel,noPel) => {
+	let connection = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+
+	var curdate = new Date();
+	console.log(curdate);
+	var future = new Date(curdate.getMinutes()*60000);
+	console.log(id,namaPel,domPel,noPel);
+	const [rows] = await connection.query('SELECT memberid FROM m_member WHERE hp = ?', [noPel]);
+	if(rows.length == 0) {
+		const a = await connection.query('INSERT INTO m_member (memberid,membername,joindate,address3,hp,race,user_id,membertypeid,changesdate,create_date,mme_createdby,mme_createddt,mme_updatedby,mme_updateddt) VALUES (?,?,now(),?,?,?,?,?,now(),now(),?,now(),?,now() + INTERVAL 7 MINUTE)', [id,namaPel,domPel,noPel,1,"admin","S1","admin","admin"]);
+	console.log('wew berhasil terdaftar dengan ID: '+ id);
+	connection.close();
+	return '*Selamat anda berhasil terdaftar*\n\nID       : '+ id+'\nNama    : '+namaPel.replace(/\w/,c =>c.toUpperCase())+'\nKota      : '+domPel+'   \nNo Hp   : '+noPel+'\nPoin       : Rp'+'0\n\nInformasi produk,promo,dll ikuti kami di https://www.instagram.com/citrasusuonline/ ';
+}else{
+	console.log('Kamu sudah terdaftar dengan ID: '+ rows[0].id);
+	connection.close();
+	return 'registered';
+}
+
+}
+
+
+const update = async (namaPel,domPel,noPel) => {
+	let connection = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+	console.log(namaPel,domPel,noPel);
+	const [rows] = await connection.query('SELECT memberid FROM m_member WHERE hp = ?', [noPel]);
+	if(rows.length > 0) {
+		const a = await connection.query('UPDATE m_member set membername =? ,address3= ?,changesdate=now(),mme_createddt=now(),mme_updateddt=now()+ INTERVAL 7 MINUTE WHERE hp=?', [namaPel,domPel,noPel]);
+	console.log('wew berhasil Update dengan No: '+ noPel);
+	connection.close();
+	return '*Selamat anda berhasil update*';
+}else{
+	console.log('Kamu sudah terdaftar dengan ID: '+ rows[0].id);
+	connection.close();
+	return 'registered';
+}
+}
+
+const daftarbidan = async (id,namaPel,domPel,noPel,tags) => {
+	let warep = await mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'divipro_citra_susu',
+		connectTimeout : 30000
+	});
+	var curdate = new Date();
+	console.log(curdate);
+	var future = new Date(curdate.getMinutes()*60000);
+	console.log(id,namaPel,domPel,noPel);
+	const [rows] = await warep.query('SELECT memberid FROM m_member WHERE hp = ?', [noPel]);
+	if(rows.length == 0) {
+		const a = await warep.query('INSERT INTO m_member (memberid,membername,joindate,address3,hp,race,user_id,membertypeid,changesdate,create_date,mme_createdby,mme_createddt,mme_updatedby,mme_updateddt,church_address3) VALUES (?,?,now(),?,?,?,?,?,now(),now(),?,now(),?,now() + INTERVAL 7 MINUTE,?)', [id,namaPel,domPel,noPel,1,"admin","S1","admin","admin",tags]);
+	console.log('wew berhasil terdaftar dengan ID: '+ id);
+	warep.close();
+	return '*Selamat anda berhasil terdaftar*\n\nID       : '+ id+'\nNama    : '+namaPel.replace(/\w/,c =>c.toUpperCase())+'\nKota      : '+domPel+'   \nNo Hp   : '+noPel+'\nPoin       : Rp'+'0\n\nInformasi produk,promo,dll ikuti kami di https://www.instagram.com/citrasusuonline/ ';
+}else{
+	console.log('Kamu sudah terdaftar dengan ID: '+ rows[0].id);
+	warep.close();
+	return 'registered';
+}
+
+}
+
+
+
+module.exports = {
+	//createConnection,
+	//warep,
+	//getReply,
+	//getMessage,
+	getMember,
+	getMemberB,
+	getPoint,
+	update,
+	daftar
+	//update
+}
