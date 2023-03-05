@@ -66,7 +66,8 @@ app.get("/", cors(), (req, res) => {
 
 const client = new Client({
   puppeteer: {
-    headless: false,executablePath: process.env .NODE_ENV==='production' ?  process.env.PUPPETEER_EXECUTABLE_PATH :puppeteer.executablePath(),
+    headless: false,
+    executablePath: process.env .NODE_ENV==='production' ?  process.env.PUPPETEER_EXECUTABLE_PATH :puppeteer.executablePath(),
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
