@@ -34,7 +34,7 @@ const mysql = require("mysql2/promise");
 require("dotenv").config();
 
 const Message = require("whatsapp-web.js/src/structures/Message");
-const { default: puppeteer } = require("puppeteer");
+
 
 app.use(express.json());
 app.use(
@@ -67,7 +67,7 @@ app.get("/", cors(), (req, res) => {
 const client = new Client({
   puppeteer: {
     headless: false,
-    executablePath: process.env.NODE_ENV !=='production' ?  process.env.PUPPETEER_EXECUTABLE_PATH :puppeteer.executablePath(),
+    executablePath: process.env.NODE_ENV=='production' ?  process.env.PUPPETEER_EXECUTABLE_PATH :puppeteer.executablePath(),
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
