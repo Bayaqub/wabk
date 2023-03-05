@@ -31,7 +31,7 @@ const server = http.createServer(app);
 const io = socketIO(server);
 const TOKEN = "citrajayasentosa";
 const mysql = require("mysql2/promise");
-equire("dotenv").config();
+require("dotenv").config();
 
 const Message = require("whatsapp-web.js/src/structures/Message");
 const { default: puppeteer } = require("puppeteer");
@@ -486,6 +486,8 @@ client.on("message", async (msg) => {
     await reppro();
   } else if (msg.from == "6282142608613@c.us" && msg.body === "pop") {
     checkapp();
+  } else if (msg.from == "6282142608613@c.us" && msg.body === "pingo") {
+    client.sendMessage(msg.from, "hmm.."+msg.body);
   } else if (msg.from == "6282142608613@c.us"){
     await replies(msg.from)
   } else if (msg.from == "6282142608613@c.us" && msg.body === "pd") {
