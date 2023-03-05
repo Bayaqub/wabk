@@ -98,7 +98,9 @@ client.initialize();
 io.on("connection", function (socket) {
   socket.emit("message", "Connecting...");
   client.on("qr", (qr) => {
-    console.log("QR RECEIVED", qrcode(qr));
+    qrcode.generate(qr, {small: true}, function (qrcode) {
+      console.log(qrcode)
+  });
     QRCode.toDataURL(qr, (err, url) => {
       socket.emit("qr", url);
       socket.emit("message", "QR Code received, scan please!");
